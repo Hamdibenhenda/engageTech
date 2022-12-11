@@ -11,7 +11,7 @@ export class DataService {
   constructor(
     private httpClient: HttpClient) { }
 
-  public getData(): Observable< [] > {
+  public getData(): Observable<[]> {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('Accept', 'application/json');
     return this.httpClient.get<[]>(this.url + '/labourstats');

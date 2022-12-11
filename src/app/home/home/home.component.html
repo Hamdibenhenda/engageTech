@@ -1,9 +1,9 @@
-<section id="home">
+<section id="home" class="mt-5">
     <div class="container pt-4">
-        <h3>Labor cost repot</h3>
+        <h1>Labor cost repot</h1>
         <div class="row">
             <div class="col-10">
-                <table class="table data-table">
+                <table class="table table-sm data-table" [ngClass]="activeSortColumn.toLowerCase().replace(' ','-')">
                     <thead class="mb-3">
                         <th [class.active]="activeSortColumn === 'PAYROLL PROVIDER'"
                             [ngClass]="{'asc': sortByNameAsc === true , 'desc' : sortByNameAsc === false }"
@@ -32,13 +32,15 @@
                         <th [class.active]="activeSortColumn === 'LABOR COST'"
                             [ngClass]="{'asc': sortAsc === true , 'desc' : sortAsc === false }"
                             (click)="activeSortColumn = 'LABOR COST';sortByKey('grossPayTotal',sortAsc = !sortAsc)">
-                            <span> LABOR COST (£) </span>
+                            <span> LABOuR COST (£) </span>
                         </th>
-                        <th>
-                            <span> WORK-<br>FORCE </span>
+                        <th [class.active]="activeSortColumn === 'WORKFORCE'"
+                            [ngClass]="{'asc': sortAsc === true , 'desc' : sortAsc === false }"
+                            (click)="activeSortColumn = 'WORKFORCE';sortByKey('grossPayTotal',sortAsc = !sortAsc)">
+                            <span> WORK-FORCE </span>
                         </th>
                     </thead>
-                    <tbody>
+                    <tbody [@listAnimation]="providersList.length">
                         <tr class="mb-2" *ngFor="let item of providersList">
                             <td [class.active]="activeSortColumn === 'PAYROLL PROVIDER'">
                                 {{item.name}}
@@ -58,8 +60,8 @@
                             <td class="upper-size" [class.active]="activeSortColumn === 'LABOR COST'">
                                 {{(item.labourCostTotal / 100)| number: '1.0-0' }}
                             </td>
-                            <td>
-                                <!-- {{((item.labourCostTotal / total.labourCostTotal) * 100)}} % -->
+                            <td [class.active]="activeSortColumn === 'WORKFORCE'" >
+                                {{calculatePercentage(item.labourCostTotal)}} %
                             </td>
 
                         </tr>
