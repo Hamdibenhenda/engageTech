@@ -21,9 +21,15 @@
 
       span {
         padding: 0 !important;
-        max-width: 44%;
-        display: block;
+        max-width: 88%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         position: relative;
+
+        @media only screen and (min-width: 992px) {
+          max-width: 44%;
+        }
       }
 
       &.active {
@@ -40,7 +46,6 @@
             border-right: 1px solid red;
             border-top: 1px solid red;
             right: -10px;
-            bottom: 7px;
             transition: all 0.3s ease-in;
             transform-origin: center;
           }
