@@ -34,16 +34,14 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dataService.getData().subscribe(
-      (response: any) => {
+    this.dataService.getData().subscribe({
+      next: (response: any) => {
         this.dataList = response[0];
         this.total = response[0]['total'][0];
         this.sortByName(true)
       },
-      (error) => {
-        console.log(error);
-      }
-    )
+      error: (e) => console.error(e)
+    })
   }
 
   sortByKey(key: any, asc: boolean) {
@@ -71,7 +69,7 @@ export class HomeComponent implements OnInit {
   }
 
   calculatePercentage(amount: number) {
-   return ((amount / this.total.labourCostTotal) * 100).toFixed(2);
+    return ((amount / this.total.labourCostTotal) * 100).toFixed(2);
   }
 
 }

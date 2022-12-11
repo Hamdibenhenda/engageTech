@@ -2,7 +2,7 @@
     <div class="container pt-4">
         <h1>Labor cost repot</h1>
         <div class="row">
-            <div class="col-10">
+            <div class="col-lg-10 col-sm-12">
                 <table class="table table-sm data-table" [ngClass]="activeSortColumn.toLowerCase().replace(' ','-')">
                     <thead class="mb-3">
                         <th [class.active]="activeSortColumn === 'PAYROLL PROVIDER'"
@@ -65,7 +65,7 @@
                             </td>
 
                         </tr>
-                        <tr class="total" *ngIf="dataList.total">
+                        <tr class="total" *ngIf="dataList && dataList.total">
                             <td>
                                 TOTAL
                             </td>
