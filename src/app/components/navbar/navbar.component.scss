@@ -5,12 +5,12 @@
     padding-left: 15px;
     padding-right: 15px;
     background-color: #bcc9ff;
-    padding-bottom: 0px;
+    padding-bottom: 0;
     text-align: right;
 
     p {
-      padding-bottom: 0px;
-      margin-bottom: 0px;
+      padding-bottom: 0;
+      margin-bottom: 0;
 
       a {
         color: #111233;
@@ -18,10 +18,9 @@
         text-decoration: none;
       }
     }
-
   }
 
-  .span_3 {
+  .span3 {
     display: flex;
     float: none;
     width: auto;
@@ -31,17 +30,15 @@
     padding: 10px;
     background-color: #fff;
     transform: scale(1.8);
-    box-shadow: 0px 5px 10px #00000026;
-    transition: all 333ms ease;
-    color: #ffffff !important;
+    box-shadow: 0 5px 10px #00000026;
+    color: #fff;
     width: auto;
     max-width: none;
     display: block;
     line-height: 22px;
     font-size: 22px;
     letter-spacing: -1px;
-    color: #444;
-    font-family: 'Open Sans';
+    font-family: "Open Sans", sans-serif;
     font-weight: 600;
 
     img {
@@ -53,7 +50,6 @@
       display: block;
     }
   }
-
 }
 
 @media only screen and (min-width: 1000px) {
@@ -64,5 +60,4 @@
       position: relative;
     }
   }
-
 }

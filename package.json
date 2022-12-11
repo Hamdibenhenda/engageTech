@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint-ts": "ng lint",
     "lint-css": "stylelint \"src/**/*.scss\" --custom-syntax postcss-scss",
-    "lint": "npm run lint-ts && npm run lint-css"
+    "lint": "npm run lint-ts && npm run lint-css",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
