@@ -1,0 +1,88 @@
+<section id="home">
+    <div class="container pt-4">
+        <h3>Labor cost repot</h3>
+        <div class="row">
+            <div class="col-10">
+                <table class="table data-table">
+                    <thead class="mb-3">
+                        <th [class.active]="activeSortColumn === 'PAYROLL PROVIDER'"
+                            [ngClass]="{'asc': sortByNameAsc === true , 'desc' : sortByNameAsc === false }"
+                            (click)="activeSortColumn = 'PAYROLL PROVIDER'; sortByName(sortByNameAsc = !sortByNameAsc)">
+                            <span>PAYROLL PROVIDER </span>
+                        </th>
+                        <th [class.active]="activeSortColumn === 'WORKER'"
+                            [ngClass]="{'asc': sortAsc === true , 'desc' : sortAsc === false }"
+                            (click)="activeSortColumn = 'WORKER';sortByKey('workerCount',sortAsc = !sortAsc)">
+
+                            <span>WORKER</span>
+                        </th>
+                        <th>
+                            <span>COMPILANCE SCORE</span>
+                        </th>
+                        <th [class.active]="activeSortColumn === 'GROSS PAY'"
+                            [ngClass]="{'asc': sortAsc === true , 'desc' : sortAsc === false }"
+                            (click)="activeSortColumn = 'GROSS PAY';sortByKey('labourCostTotal',sortAsc = !sortAsc)">
+                            <span> GROSS PAY (£) </span>
+
+
+                        </th>
+                        <th>
+                            <span> PAYROLL ADMIN (£) </span>
+                        </th>
+                        <th [class.active]="activeSortColumn === 'LABOR COST'"
+                            [ngClass]="{'asc': sortAsc === true , 'desc' : sortAsc === false }"
+                            (click)="activeSortColumn = 'LABOR COST';sortByKey('grossPayTotal',sortAsc = !sortAsc)">
+                            <span> LABOR COST (£) </span>
+                        </th>
+                        <th>
+                            <span> WORK-<br>FORCE </span>
+                        </th>
+                    </thead>
+                    <tbody>
+                        <tr class="mb-2" *ngFor="let item of providersList">
+                            <td [class.active]="activeSortColumn === 'PAYROLL PROVIDER'">
+                                {{item.name}}
+                            </td>
+                            <td class="upper-size" [class.active]="activeSortColumn === 'WORKER'">
+                                {{item.workerCount}}
+                            </td>
+                            <td>
+                                {{item.complianceStats ? (item.complianceStats.Total| number: '1.0-0' ): 0 }} %
+                            </td>
+                            <td class="upper-size" [class.active]="activeSortColumn === 'GROSS PAY'">
+                                {{(item.grossPayTotal / 100)| number: '1.0-0'}}
+                            </td>
+                            <td>
+                                -
+                            </td>
+                            <td class="upper-size" [class.active]="activeSortColumn === 'LABOR COST'">
+                                {{(item.labourCostTotal / 100)| number: '1.0-0' }}
+                            </td>
+                            <td>
+                                <!-- {{((item.labourCostTotal / total.labourCostTotal) * 100)}} % -->
+                            </td>
+
+                        </tr>
+                        <tr class="total" *ngIf="dataList.total">
+                            <td>
+                                TOTAL
+                            </td>
+                            <td class="upper-size"> {{dataList.total[0].workerCount}} </td>
+                            <td> {{dataList.total[0].complianceStats ? (dataList.total[0].complianceStats.Total| number:
+                                '1.0-0' ): 0 }} %</td>
+                            <td class="upper-size"> {{(dataList.total[0].grossPayTotal / 100)| number: '1.0-0'}} </td>
+                            <td> - </td>
+                            <td class="upper-size"> {{(dataList.total[0].labourCostTotal / 100)| number: '1.0-0' }}
+                            </td>
+                            <td> 100 % </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+
+
+</section>
